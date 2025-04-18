@@ -91,4 +91,15 @@ class StudentOperations {
         }
         throw new StudentNotFoundException("Student with PRN " + prn + " not found.");
     }
+    
+    public void deleteStudent(long prn) throws StudentNotFoundException {
+        for (Student student : students) {
+            if (student.getPRN() == prn) {
+                students.remove(student);
+                System.out.println("Student with PRN " + prn + " removed.");
+                return;
+            }
+        }
+        throw new StudentNotFoundException("Student with PRN " + prn + " not found.");
+    }
 }
