@@ -2,7 +2,7 @@
 // PRN: 23070126146
 // Batch: B-3 
 
-import java.util.Scanner;
+import java.util.*;
 
 class Main {
 
