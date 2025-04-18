@@ -18,7 +18,7 @@ class StudentOperations {
         System.out.println("Student added successfully.");
     }
 
-    
+
     //method to display students
         public void displayStudents() {
         if (students.isEmpty()) {
@@ -30,4 +30,32 @@ class StudentOperations {
         }
     }
 
+    //methods to seatch by name prn and position
+    public void searchByPRN(long prn) throws StudentNotFoundException {
+        for (Student student : students) {
+            if (student.getPRN() == prn) {
+                student.display();
+                return;
+            }
+        }
+        throw new StudentNotFoundException("Student with PRN " + prn + " not found.");
+    }
+
+    public void searchByName(String name) throws StudentNotFoundException {
+        for (Student student : students) {
+            if (student.getName().equalsIgnoreCase(name)) {
+                student.display();
+                return;
+            }
+        }
+        throw new StudentNotFoundException("Student with name '" + name + "' not found.");
+    }
+
+    public void searchByPosition(int pos) throws InvalidPositionException {
+        if (pos >= 0 && pos < students.size()) {
+            students.get(pos).display();
+        } else {
+            throw new InvalidPositionException("Invalid position. No student found at the given index.");
+        }
+    }
 }
